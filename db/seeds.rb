@@ -1,7 +1,23 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# frozen_string_literal: true
+
+ENV['SEEDING'] = 'true'
+
+@logger = Logger.new(STDOUT)
+@logger.formatter = proc { |_severity, _time, _progname, msg| "#{msg}\n" }
+
+@logger.debug '**** SEEDING DATABASE ****'
+
+seeds_dir = Rails.root.join('db/seeds')
+
+@logger.debug '-- Cleaning up database --'
+
+[
+  Car,
+  Model,
+  Manufacturer,
+  User
+].each(&:destroy_all)
+
+load seeds_dir.join('models.rb')
+
+@logger.debug '**** FINISHED SEEDING DATABASE ****'
