@@ -3,10 +3,30 @@
   background: white;
 }
 
+.navbar-shadow {
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.navbar-brand {
+  font-family: $brand-font;
+  font-size: x-large;
+  font-weight: 800;
+}
+
+.navbar-link {
+  color: $black;
+  padding: 10px;
+
+  &:hover {
+    color: $red;
+    text-decoration: inherit;
+  }
 }

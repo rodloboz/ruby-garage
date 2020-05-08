@@ -1,2 +1,90 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<section class="bg-white p-5">
+  <div class="mb-5"></div>
+  <div class="header">
+    <h1>Vrrrrrumm... discover and drive the most beautiful cars ever made</h1>
+  </div>
+  <div class="row mt-4">
+    <% 3.times do %>
+      <div class="col-xs-12 col-lg-4">
+        <div class="card-car">
+          <img src="http://www.car-revs-daily.com/wp-content/uploads/1971-Lamborghini-Miura-P400-SV-1.jpg" />
+          <div class="card-car-infos">
+            <div>
+              <h2>Title here</h2>
+              <p>Short description here!</p>
+            </div>
+            <h2 class="card-car-pricing">€99.99</h2>
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-car-user avatar-bordered" />
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+<section class="bg-black p-5">
+  <div class="d-flex p-2 flex-row justify-content-between">
+    <div style="width: 50%">
+      <h2>Drive the car of your dreams</h2>
+      <p class="font-weight-light">Now you can feel the thril of driving a supercar, cruise in a classic vintage, or simply have fun in a cheap car from any era.</p>
+    </div>
+    <div>
+      <%= link_to 'Explore more', '#', class: 'btn btn-clear' %>
+    </div>
+  </div>
+  <div class="parent">
+    <div class="div1">
+      <div class="card-car card-car--dark card-car--featured">
+        <img src="http://www.car-revs-daily.com/wp-content/uploads/1971-Lamborghini-Miura-P400-SV-1.jpg" />
+        <div class="card-car-infos">
+          <div>
+            <h2>Title here</h2>
+            <p>Short description here!</p>
+          </div>
+          <h2 class="card-car-pricing">€99.99</h2>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-car-user avatar-bordered" />
+        </div>
+      </div>
+    </div>
+    <div class="div2">
+      <div class="card-car card-car--dark">
+        <img src="http://www.car-revs-daily.com/wp-content/uploads/1971-Lamborghini-Miura-P400-SV-1.jpg" />
+        <div class="card-car-infos">
+          <div>
+            <h2>Title here</h2>
+            <p>Short description here!</p>
+          </div>
+          <h2 class="card-car-pricing">€99.99</h2>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-car-user avatar-bordered" />
+        </div>
+      </div>
+    </div>
+    <div class="div3">
+      <div class="card-car card-car--dark">
+        <img src="http://www.car-revs-daily.com/wp-content/uploads/1971-Lamborghini-Miura-P400-SV-1.jpg" />
+        <div class="card-car-infos">
+          <div>
+            <h2>Title here</h2>
+            <p>Short description here!</p>
+          </div>
+          <h2 class="card-car-pricing">£99.99</h2>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-car-user avatar-bordered" />
+        </div>
+      </div>
+    </div>
+    <div class="div4">
+      <div class="card-car card-car--dark">
+        <img src="http://www.car-revs-daily.com/wp-content/uploads/1971-Lamborghini-Miura-P400-SV-1.jpg" />
+        <div class="card-car-infos">
+          <div>
+            <h2>Title here</h2>
+            <p>Short description here!</p>
+          </div>
+          <h2 class="card-car-pricing">£99.99</h2>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-car-user avatar-bordered" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

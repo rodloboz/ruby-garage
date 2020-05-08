@@ -1,0 +1,32 @@
+<%= simple_form_for @car do |f| %>
+  <div class="row">
+    <div class="col-sm-6">
+      <%= f.association :manufacturer,
+                    collection: Manufacturer.order(name: :asc),
+                    include_blank: false,
+                    include_hidden: false
+      %>
+      <%= f.association :model,
+                        collection: Model.order(name: :asc),
+                        include_blank: false,
+                        include_hidden: false
+      %>
+      <%= f.input :color, placeholder: 'Burgundy' %>
+      <%= f.input :year, collection: @years,
+                        selected: f.object.year || @years.last,
+                        include_blank: false,
+                        include_hidden: false
+      %>
+    </div>
+    <div class="col-sm-6">
+      <%= f.input :number_plate, placeholder: 'EATMYDUST' %>
+      <%= f.input :description, as: :text,
+                                placeholder: 'Write a short paragraph about your car',
+                                input_html: { rows: 8 } %>
+    </div>
+  </div>
+  <div>
+    <%= f.button :submit, 'Save', class: 'btn btn-primary btn-lg' %>
+    <%= link_to 'Cancel', :back, class: 'btn btn-dark btn-lg' %>
+  </div>
+<% end %>

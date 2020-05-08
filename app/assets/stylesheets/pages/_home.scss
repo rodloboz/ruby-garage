@@ -1,1 +1,29 @@
 // Specific CSS for your home-page
+.header {
+  max-width: 60vw;
+  font-size: 2vw !important;
+  letter-spacing: -0.02em !important;
+  line-height: 4.2vw !important;
+  background: linear-gradient(to right,$red 9.38%, lighten($red, 20%) 88.54%) !important;
+  background-clip: text !important;;
+  fill-color: transparent !important;
+  color: transparent;
+}
+
+.bg-black {
+  background: $black;
+  color: $white;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  }
+  
+  .div1 { grid-area: 1 / 1 / 3 / 3; }
+  .div2 { grid-area: 1 / 3 / 2 / 4; }
+  .div3 { grid-area: 1 / 4 / 2 / 5; }
+  .div4 { grid-area: 2 / 3 / 3 / 5; }

@@ -1,0 +1,52 @@
+.card-car {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-car > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-car h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-car p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.card-car .card-car-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-car-infos .card-car-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
+
+.card-car--featured {
+  height: 100%;
+
+  img:first-child {
+    height: 400px;
+  }
+}
+
+.card-car--dark {
+  color: $white;
+  background: $gray;
+}
