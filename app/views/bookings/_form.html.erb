@@ -1,0 +1,27 @@
+<div class="booking border p-4">
+  <%= simple_form_for([@car, @booking]) do |f| %>
+    <h3><span class="price">€99</span> per day</h3>
+    <hr>
+    <div class="form-row">
+      <%= f.input :start_date, as: :string, label: "Dates", placeholder: "From" %>
+      <%= f.input :end_date, as: :string, label: false, placeholder: "To", disabled: true %>
+    </div>
+    <div class="costs">
+      <table class="table">
+        <tr>
+          <td>€99 x <span>0</span> hours</td>
+          <td class="text-right">€<span>0</span></td>
+        </tr>
+        <tr>
+          <td>Service fee</td>
+          <td class="text-right">€<span>0</span></td>
+        </tr>
+        <tr>
+          <td><strong>Total</strong></td>
+          <td class="text-right">€<span>0</span></td>
+        </tr>
+      </table>
+    </div>
+    <%= f.button :submit, 'Reserve', class: 'btn btn-primary btn-lg btn-block' %>
+  <% end %>
+</div>

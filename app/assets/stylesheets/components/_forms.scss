@@ -1,0 +1,17 @@
+.inline_field_wrapper {
+  display: inline-block;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  div {
+    flex:1 1 auto;
+    margin:5px;
+  }
+}
+
+abbr[title="required"] {
+  display: none;
+}
