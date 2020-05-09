@@ -30,6 +30,16 @@ class Car < ApplicationRecord
 
   scope :most_favorited, ->(limit = 10) { order(favorited_count: :desc).limit(limit) }
 
+  scope :select_by_manufacturer, lambda { |manufacturer_names|
+    joins(:manufacturer).where(manufacturers: { name: manufacturer_names })
+                        .distinct
+  }
+
+  scope :select_by_model, lambda { |model_names|
+    joins(:model).where(models: { name: model_names })
+                 .distinct
+  }
+
   def name
     [manufacturer.name, model.name].join(' ')
   end

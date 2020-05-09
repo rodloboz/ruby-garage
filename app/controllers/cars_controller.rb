@@ -2,7 +2,7 @@ class CarsController < ApplicationController
   before_action :set_car, only: %i[show edit update]
 
   def index
-    @cars = policy_scope(Car.all)
+    @cars = policy_scope(car_search)
 
     params[:page] = nil if @cars.page(params[:page])
                                 .per(12).out_of_range?
@@ -57,6 +57,13 @@ class CarsController < ApplicationController
       :manufacturer_id, :model_id, :color,
       :year, :number_plate, :description,
       :photo, :price_per_day
+    )
+  end
+
+  def car_search
+    CarSearchService.call(
+      manufacturers: params[:manufacturer],
+      models: params[:model]
     )
   end
 end
