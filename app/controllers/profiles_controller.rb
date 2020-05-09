@@ -1,4 +1,4 @@
-class ProfilesController < ApplicationController
+class ProfilesController < PrivateController
   before_action :set_user
 
   def edit; end

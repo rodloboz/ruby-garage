@@ -1,4 +1,4 @@
-class TransfersController < ApplicationController
+class TransfersController < PrivateController
   before_action :set_car
 
   def new

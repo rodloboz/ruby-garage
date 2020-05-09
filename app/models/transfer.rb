@@ -21,6 +21,6 @@ class Transfer
   def new_ownership
     return unless car.owner == new_owner
 
-    errors.add :new_owner, 'ist the same as the current owner'
+    errors.add :new_owner, 'is the same as the current owner'
   end
 end

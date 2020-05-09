@@ -1,4 +1,4 @@
-class BookingsController < ApplicationController
+class BookingsController < PrivateController
   def create
     @car = Car.find(params[:car_id])
     @booking = Booking.new(booking_params)
