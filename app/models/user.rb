@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   # As an owner:
-  has_many :cars
+  has_many :cars, foreign_key: :owner_id
   has_many :car_bookings, through: :cars,
                           source_type: 'Booking'
 

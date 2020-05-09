@@ -6,5 +6,7 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create]
   end
 
+  resource :garage
+
   root to: 'pages#home'
 end
