@@ -1,6 +1,7 @@
 <div class="px-5 mt-5 pb-3">
   <p style="margin: 0;"><%= pluralize(@cars.length, 'car') %></p>
   <h1>My Garage</h1>
+  <%= link_to 'Add a new car', new_car_path %>
   <div class="mt-2 mb-4">
     <table class="table table-striped table-bordered">
       <thead>
@@ -26,13 +27,13 @@
             <td><%= car.color %></td>
             <td><%= car.year %></td>
             <td><%= car.number_plate %></td>
-            <td>€99</td>
+            <td>€<%= number_with_delimiter(car.price_per_day) %></td>
             <td><%= car.favorited_count %></td>
             <td><%= car.number_of_bookings %></td>
             <td>
               <%= link_to 'View', car_path(car) %> |
               <%= link_to 'Edit', edit_car_path(car) %> |
-              <%= link_to 'Transfer', "#" %> |
+              <%= link_to 'Transfer', new_car_transfer_path(car) %> |
               <%= link_to 'Remove', car_path(car), method: :delete %>
             </th>
           </tr>

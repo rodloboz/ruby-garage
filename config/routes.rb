@@ -3,10 +3,12 @@ Rails.application.routes.draw do
 
   resources :cars do
     resource :favorite, only: %i[create destroy]
-    resources :bookings, only: [:create]
+    resources :bookings, only: :create
+    resources :transfers, only: %i[new create]
   end
 
   resource :garage
+  resource :profile, only: %i[edit update]
 
   root to: 'pages#home'
 end

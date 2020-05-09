@@ -20,9 +20,10 @@
     </div>
     <div class="col-sm-6">
       <%= f.input :number_plate, placeholder: 'EATMYDUST' %>
+      <%= f.input :price_per_day, placeholder: '999' %>
       <%= f.input :description, as: :text,
                                 placeholder: 'Write a short paragraph about your car',
-                                input_html: { rows: 8 } %>
+                                input_html: { rows: 5 } %>
     </div>
   </div>
   <%= f.input :photo, as: :file %>

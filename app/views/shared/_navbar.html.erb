@@ -14,14 +14,30 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Add a car", new_car_path, class: "navbar-link" %>
-        </li>
         <li class="nav-item dropdown">
-          <%= image_tag "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F33%2F92%2F75%2F339275b10c5ce03bac8079c2b55bafb8.jpg&f=1&nofb=1", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% if user_signed_in? && current_user.avatar.attached? %>
+            <%= cl_image_tag current_user.avatar.key, 
+                             class: 'avatar dropdown-toggle',
+                             id: 'navbarDropdown',
+                             width: 40, height: 40,
+                             crop: :thumb, gravity: :face,
+                             data: { toggle: 'dropdown' },
+                             'aria-haspopup': true,
+                             'aria-expanded': false
+            %>
+          <% else %>
+            <%= image_tag "default.jpg",
+                          class: 'avatar dropdown-toggle',
+                          id: 'navbarDropdown',
+                          data: { toggle: 'dropdown' },
+                          'aria-haspopup': true,
+                          'aria-expanded': false
+            %>
+          <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
             <%= link_to "Garage", garage_path, class: "dropdown-item" %>
+            <hr>
+            <%= link_to "Profile", edit_profile_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>

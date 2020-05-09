@@ -20,6 +20,12 @@ class Car < ApplicationRecord
                     lower_than_or_equal_to: Time.zone.now.year
                   }
 
+  validates :price_per_day, presence: true,
+                            numericality: {
+                              only_integer: true,
+                              greater_than_or_equal_to: 0
+                            }
+
   validate :check_manufacturer_model
 
   scope :most_favorited, ->(limit = 10) { order(favorited_count: :desc).limit(limit) }

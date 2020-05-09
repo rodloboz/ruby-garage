@@ -19,11 +19,21 @@
       <% elsif wide %>
        <p><%= truncate car.description, length: 60 %></p>
       <% else %>
-        <p><%= truncate car.description, length: 38 %></p>
+        <p><%= truncate car.description, length: 35 %></p>
       <% end %>
     </div>
-    <h2 class="card-car-pricing">€99.99/day</h2>
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-car-user avatar-bordered" />
+    <h2 class="card-car-pricing">€<%= number_with_delimiter(car.price_per_day) %>/day</h2>
+    <% if car.owner.avatar.attached? %>
+      <%= cl_image_tag car.owner.avatar.key, 
+                       class: 'card-car-user avatar-bordered',
+                       width: 40, height: 40,
+                       crop: :thumb, gravity: :face
+      %>
+    <% else %>
+      <%= image_tag "default.jpg",
+                    class: 'card-car-user avatar-bordered'
+      %>
+    <% end %>
   </div>
   <%= link_to '', car_path(car), class: 'card-car-link' %>
 </div>

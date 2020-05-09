@@ -56,7 +56,7 @@ class CarsController < ApplicationController
     params.require(:car).permit(
       :manufacturer_id, :model_id, :color,
       :year, :number_plate, :description,
-      :photo
+      :photo, :price_per_day
     )
   end
 end

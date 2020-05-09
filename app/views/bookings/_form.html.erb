@@ -1,6 +1,6 @@
 <div class="booking border p-4">
   <%= simple_form_for([@car, @booking]) do |f| %>
-    <h3><span class="price">€99</span> per day</h3>
+    <h3><span class="price">€<%= number_with_delimiter(@car.price_per_day) %></span> per day</h3>
     <hr>
     <div class="form-row">
       <%= f.input :start_date, as: :string, label: "Dates", placeholder: "From" %>
@@ -9,7 +9,7 @@
     <div class="costs">
       <table class="table">
         <tr>
-          <td>€99 x <span>0</span> hours</td>
+          <td>€<%= number_with_delimiter(@car.price_per_day) %> x <span>0</span> days</td>
           <td class="text-right">€<span>0</span></td>
         </tr>
         <tr>

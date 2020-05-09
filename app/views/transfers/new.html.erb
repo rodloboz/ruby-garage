@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="card px-5 pt-5 pb-3 rounded">
+    <h1>Transfer <%= @car.name %></h1>
+    <div class="my-5">
+      <%= simple_form_for [@car, @transfer] do |f| %>
+        <%= f.input :new_owner, collection: @users,
+                                include_blank: false,
+                                include_hidden: false
+        %>
+        <%= f.button :submit, 'Transfer Car', class: 'btn btn-primary btn-lg' %>
+      <% end %>
+    </div>
+  </div>
+</div>

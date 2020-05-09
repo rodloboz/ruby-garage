@@ -1,5 +1,5 @@
 <div class="px-5 mt-5 pb-3">
-  <p style="margin: 0;"><%= pluralize(@cars.length, 'car') %></p>
+  <p style="margin: 0;"><%= pluralize(Car.count, 'car') %></p>
   <h1>Cars</h1>
   <div class="cards mt-2 mb-4">
     <%= render @cars %>
