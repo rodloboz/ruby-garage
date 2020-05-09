@@ -25,6 +25,7 @@
                                 input_html: { rows: 8 } %>
     </div>
   </div>
+  <%= f.input :photo, as: :file %>
   <div>
     <%= f.button :submit, 'Save', class: 'btn btn-primary btn-lg' %>
     <%= link_to 'Cancel', :back, class: 'btn btn-dark btn-lg' %>

@@ -13,6 +13,8 @@
 
   <body>
     <%= render 'shared/navbar' %>
-    <%= yield %>
+    <div class="<%= 'page-container' unless action_name == 'home' %>">
+      <%= yield %>
+    </div>
   </body>
 </html>

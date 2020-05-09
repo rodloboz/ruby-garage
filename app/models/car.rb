@@ -3,6 +3,8 @@ class Car < ApplicationRecord
   belongs_to :model
   belongs_to :owner, class_name: 'User'
 
+  has_one_attached :photo
+
   validates :color,
             :description,
             :number_plate, presence: true
@@ -15,6 +17,10 @@ class Car < ApplicationRecord
                   }
 
   validate :check_manufacturer_model
+
+  def name
+    [manufacturer.name, model.name].join(' ')
+  end
 
   private
 

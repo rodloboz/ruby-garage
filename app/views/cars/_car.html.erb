@@ -1,0 +1,21 @@
+<% featured = defined?(featured) ? local_assigns[:featured] : false %>
+<% height = featured ? 500 : 200 %>
+<div class="card-car<%= ' card-car--dark' if dark  %><%= ' card-car--featured' if featured %>">
+  <%= cl_image_tag car.photo.key, height: height %>
+  <span class="card-car-favorite">
+      <%= icon('far', 'heart', class: 'fa-lg') %>
+  </span>
+  <div class="card-car-infos">
+    <div>
+      <h2><%= car.name %></h2>
+      <% if featured %>
+        <p><%= car.description %></p>
+      <% elsif !dark %>
+        <p><%= truncate car.description %></p>
+      <% end %>
+    </div>
+    <h2 class="card-car-pricing">€99.99/day</h2>
+    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-car-user avatar-bordered" />
+  </div>
+  <%= link_to '', car_path(car), class: 'card-car-link' %>
+</div>

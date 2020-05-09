@@ -3,20 +3,22 @@
   <div class="header">
     <h1>Vrrrrrumm... discover and drive the most beautiful cars ever made</h1>
   </div>
-  <div class="row mt-4">
+  <div class="cards mt-4">
     <% 3.times do %>
-      <div class="col-xs-12 col-lg-4">
-        <div class="card-car">
-          <img src="http://www.car-revs-daily.com/wp-content/uploads/1971-Lamborghini-Miura-P400-SV-1.jpg" />
-          <div class="card-car-infos">
-            <div>
-              <h2>Title here</h2>
-              <p>Short description here!</p>
-            </div>
-            <h2 class="card-car-pricing">€99.99</h2>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-car-user avatar-bordered" />
+      <div class="card-car">
+        <img src="http://www.car-revs-daily.com/wp-content/uploads/1971-Lamborghini-Miura-P400-SV-1.jpg" />
+        <span class="card-car-favorite">
+            <%= icon('fa', 'heart', class: 'fa-lg text-primary') %>
+        </span>
+        <div class="card-car-infos">
+          <div>
+            <h2>Title here</h2>
+            <p>Short description here!</p>
           </div>
+          <h2 class="card-car-pricing">€99.99/day</h2>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-car-user avatar-bordered" />
         </div>
+        <%= link_to '', '#', class: 'card-car-link' %>
       </div>
     <% end %>
   </div>
@@ -29,61 +31,21 @@
       <p class="font-weight-light">Now you can feel the thril of driving a supercar, cruise in a classic vintage, or simply have fun in a cheap car from any era.</p>
     </div>
     <div>
-      <%= link_to 'Explore more', '#', class: 'btn btn-clear' %>
+      <%= link_to 'Explore more', cars_path, class: 'btn btn-clear' %>
     </div>
   </div>
-  <div class="parent">
-    <div class="div1">
-      <div class="card-car card-car--dark card-car--featured">
-        <img src="http://www.car-revs-daily.com/wp-content/uploads/1971-Lamborghini-Miura-P400-SV-1.jpg" />
-        <div class="card-car-infos">
-          <div>
-            <h2>Title here</h2>
-            <p>Short description here!</p>
-          </div>
-          <h2 class="card-car-pricing">€99.99</h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-car-user avatar-bordered" />
-        </div>
-      </div>
+  <div class="grid-cars">
+    <div class="grid-featured">
+      <%= render @car, featured: true, dark: true %>
     </div>
-    <div class="div2">
-      <div class="card-car card-car--dark">
-        <img src="http://www.car-revs-daily.com/wp-content/uploads/1971-Lamborghini-Miura-P400-SV-1.jpg" />
-        <div class="card-car-infos">
-          <div>
-            <h2>Title here</h2>
-            <p>Short description here!</p>
-          </div>
-          <h2 class="card-car-pricing">€99.99</h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-car-user avatar-bordered" />
-        </div>
-      </div>
+    <div class="grid-top-1">
+      <%= render @car2, dark: true %>
     </div>
-    <div class="div3">
-      <div class="card-car card-car--dark">
-        <img src="http://www.car-revs-daily.com/wp-content/uploads/1971-Lamborghini-Miura-P400-SV-1.jpg" />
-        <div class="card-car-infos">
-          <div>
-            <h2>Title here</h2>
-            <p>Short description here!</p>
-          </div>
-          <h2 class="card-car-pricing">£99.99</h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-car-user avatar-bordered" />
-        </div>
-      </div>
+    <div class="grid-top-2">
+      <%= render @car3, dark: true %>
     </div>
-    <div class="div4">
-      <div class="card-car card-car--dark">
-        <img src="http://www.car-revs-daily.com/wp-content/uploads/1971-Lamborghini-Miura-P400-SV-1.jpg" />
-        <div class="card-car-infos">
-          <div>
-            <h2>Title here</h2>
-            <p>Short description here!</p>
-          </div>
-          <h2 class="card-car-pricing">£99.99</h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-car-user avatar-bordered" />
-        </div>
-      </div>
+    <div class="grid-bottom">
+      <%= render @car4, dark: true %>
     </div>
   </div>
 </section>
