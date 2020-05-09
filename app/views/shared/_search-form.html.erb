@@ -1,0 +1,57 @@
+<div id="search" class="w-100">
+  <%= form_with url: cars_path,
+                local: true,
+                method: :get do |f| %>
+    <div class="search-wrapper w-100 d-flex flex-row justify-content-between border rounded bg-white">
+      <div class="d-flex flex-column border-right group p-3">
+        <%= f.label :manufacturer, 'Manufacturers' %>
+        <%= f.text_field :manufacturer,
+                         value: params[:manufacturer],
+                         placeholder: 'Select a manufacturer'
+        %>
+        <div class="group-dropdown border p-3">
+          <ul>
+            <li>Ferrari</li>
+            <li>Lambo</li>
+          </ul>
+        </div>
+      </div>
+      <div class="d-flex flex-column border-right group p-3">
+        <%= f.label :manufacturer, 'Models' %>
+        <%= f.text_field :model,
+                         value: params[:model],
+                         placeholder: 'Select a model'
+        %>
+        <div class="group-dropdown border p-3">
+          <ul>
+            <li>Ferrari</li>
+            <li>Lambo</li>
+          </ul>
+        </div>
+      </div>
+      <div class="d-flex flex-column border-right group p-3">
+        <%= f.label :year, 'Year' %>
+        <%= f.text_field :year,
+                         value: params[:year],
+                         placeholder: 'Select the year'
+        %>
+        <div class="group-dropdown border p-3">
+          <ul>
+            <li>Ferrari</li>
+            <li>Lambo</li>
+          </ul>
+        </div>
+      </div>
+      <div class="d-flex flex-column group p-3">
+        <%= f.label :year, 'Start date / End date' %>
+        <%= f.text_field :dates,
+                         value: params[:year],
+                         placeholder: 'Add dates'
+        %>
+      </div>
+      <div class="p-3">
+        <%= f.submit 'Search', class: 'btn btn-primary btn-rainbow' %>
+      </div>
+    </div>
+  <% end %>
+</div>

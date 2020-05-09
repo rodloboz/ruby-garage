@@ -1,22 +1,8 @@
 <div class="px-5 mt-5 pb-3">
   <p style="margin: 0;"><%= pluralize(Car.count, 'car') %></p>
   <h1>Cars</h1>
-  <div class="d-flex flex-row mb-4">
-    <%= form_with url: cars_path,
-                  local: true,
-                  method: :get do |f| %>
-      <%= f.select :manufacturer,
-                   Manufacturer.options_for_select,
-                   selected: params[:manufacturer],
-                   include_blank: true
-      %>
-      <%= f.select :model,
-                   Model.options_for_select,
-                   selected: params[:model],
-                   include_blank: true
-      %>
-      <%= f.submit 'Search', class: 'btn btn-primary' %>
-    <% end %>
+  <div class="my-4">
+     <%= render 'shared/search-form' %>
   </div>
   <div class="cards mt-2 mb-4">
     <%= render @cars %>

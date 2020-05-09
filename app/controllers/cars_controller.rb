@@ -62,8 +62,8 @@ class CarsController < ApplicationController
 
   def car_search
     CarSearchService.call(
-      manufacturers: params[:manufacturer],
-      models: params[:model]
+      manufacturer: params[:manufacturer],
+      model: params[:model]
     )
   end
 end

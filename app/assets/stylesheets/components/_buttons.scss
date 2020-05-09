@@ -7,3 +7,8 @@
     color: inherit;
   }
 }
+
+.btn-rainbow {
+  padding: 10px 30px;
+  background: linear-gradient(to right, lighten($red, 20%) 9.38%, $red 88.54%) !important;
+}

@@ -5,15 +5,15 @@ class CarSearchService
     new(*args).call
   end
 
-  def initialize(cars: nil, manufacturers: nil, models: nil)
+  def initialize(cars: nil, manufacturer: nil, model: nil)
     @cars = cars || Car.all
-    @manufacturers = manufacturers
-    @models = models
+    @manufacturer = manufacturer
+    @model = model
   end
 
   def call
-    @cars = @cars.select_by_manufacturer(@manufacturers) if @manufacturers.present?
-    @cars = @cars.select_by_model(@models) if @models.present?
+    @cars = @cars.search_by_manufacturer(@manufacturer) if @manufacturer.present?
+    @cars = @cars.search_by_model(@model) if @model.present?
     @cars.with_attached_photo
   end
 end
