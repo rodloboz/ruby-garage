@@ -1,4 +1,6 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top px-5">
+<% fixed = defined?(fixed) ? local_assigns[:fixed] : false %>
+
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon px-5 <%= 'fixed-top' if fixed %>">
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "logo.png" %>
     <span>Ruby Garage</span>

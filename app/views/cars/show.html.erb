@@ -1,1 +1,26 @@
-<%= link_to 'Edit car', edit_car_path(@car) %>
+<div class="splash">
+  <%= cl_image_tag @car.photo.key,
+                   width: 1440, height: 367,
+                   crop: 'fill_pad', gravity: 'auto',
+                   background: 'black'
+  %>
+</div>
+
+<div class="container my-4">
+  <div class="row">
+    <div class="col-12 col-lg-8">
+      <h1><%= @car.name %></h1>
+      <p><%= @car.year %> &middot; <%= @car.color%></p>
+      <p><%= @car.description %></p>
+    </div>
+
+    <div class="col-12 col-lg-4 background-primary">
+      <div class="booking border p-4">
+        <h3>€99 per night</h3>
+        <hr>
+        <h5>Dates</h5>
+        <button class="btn btn-primary btn-lg btn-block">Reserve</button>
+      </div>
+    </div>
+  </div>
+</div>

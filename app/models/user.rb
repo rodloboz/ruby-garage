@@ -6,4 +6,8 @@ class User < ApplicationRecord
 
   has_person_name
   has_one_attached :avatar
+
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_cars, through: :favorites,
+                           source_type: 'Car'
 end

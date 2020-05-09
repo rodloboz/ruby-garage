@@ -35,6 +35,8 @@ gem 'devise'
 gem 'name_of_person'
 gem 'cloudinary', '~> 1.12.0'
 gem 'kaminari'
+gem 'pundit'
+gem 'counter_culture', '~> 2.0'
 
 group :development, :test do
   gem 'pry-byebug'

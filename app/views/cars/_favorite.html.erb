@@ -1,0 +1,9 @@
+<% if user_signed_in? && car.favorited_by?(current_user) %>
+  <%= link_to car_favorite_path(car), method: :delete do %>
+    <%= icon('fa', 'heart', class: 'fa-lg text-primary') %>
+  <% end %>
+<% else %>
+  <%= link_to car_favorite_path(car), method: :post do %>
+    <%= icon('far', 'heart', class: 'fa-lg') %>
+  <% end %>
+<% end %>

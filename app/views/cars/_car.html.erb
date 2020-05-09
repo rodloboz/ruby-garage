@@ -7,7 +7,7 @@
 <div class="card-car<%= ' card-car--dark' if dark  %><%= ' card-car--featured' if featured %>">
   <%= cl_image_tag car.photo.key, height: height %>
   <span class="card-car-favorite">
-      <%= icon('far', 'heart', class: 'fa-lg') %>
+      <%= render 'cars/favorite', car: car %>
   </span>
   <div class="card-car-infos">
     <div>
