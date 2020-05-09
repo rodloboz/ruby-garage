@@ -3,6 +3,11 @@ class CarsController < ApplicationController
 
   def index
     @cars = Car.all
+
+    params[:page] = nil if @cars.page(params[:page])
+                                .per(12).out_of_range?
+
+    @cars = @cars.page(params[:page]).per(12)
   end
 
   def show; end

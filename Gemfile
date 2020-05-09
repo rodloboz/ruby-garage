@@ -34,6 +34,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'name_of_person'
 gem 'cloudinary', '~> 1.12.0'
+gem 'kaminari'
 
 group :development, :test do
   gem 'pry-byebug'

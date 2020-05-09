@@ -1,25 +1,10 @@
-<div class="container">
-  <div class="card px-5 pt-5 pb-3 rounded">
-    <p style="margin: 0;">300 cars</p>
-    <h1>Cars</h1>
-    <div class="cards mt-4">
-      <% 6.times do %>
-        <div class="card-car">
-          <img src="http://www.car-revs-daily.com/wp-content/uploads/1971-Lamborghini-Miura-P400-SV-1.jpg" />
-          <span class="card-car-favorite">
-            <%= icon('fa', 'heart', class: 'fa-lg text-primary') %>
-          </span>
-          <div class="card-car-infos">
-            <div>
-              <h2>Title here</h2>
-              <p>Short description here!</p>
-            </div>
-            <h2 class="card-car-pricing">€99.99</h2>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-car-user avatar-bordered" />
-          </div>
-          <%= link_to '', '#', class: 'card-car-link' %>
-        </div>
-      <% end %>
-    </div>
+<div class="px-5 mt-5 pb-3">
+  <p style="margin: 0;"><%= pluralize(@cars.length, 'car') %></p>
+  <h1>Cars</h1>
+  <div class="cards mt-2 mb-4">
+    <%= render @cars %>
+  </div>
+  <div class="my-5">
+    <%= paginate @cars, window: 2, left: 1, right: 1 %>
   </div>
 </div>

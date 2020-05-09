@@ -1,0 +1,23 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .first, .prev,
+  .next, .last {
+    margin-right: 10px;
+    padding: 10px;
+    font-weight: bold;
+  }
+}
+
+.page {
+  margin-right: 10px;
+  padding: 10px;
+  color: $black;
+
+  &.current {
+    background: $red;
+    color: $white;
+  }
+}

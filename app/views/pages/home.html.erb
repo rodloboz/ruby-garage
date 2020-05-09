@@ -4,22 +4,8 @@
     <h1>Vrrrrrumm... discover and drive the most beautiful cars ever made</h1>
   </div>
   <div class="cards mt-4">
-    <% 3.times do %>
-      <div class="card-car">
-        <img src="http://www.car-revs-daily.com/wp-content/uploads/1971-Lamborghini-Miura-P400-SV-1.jpg" />
-        <span class="card-car-favorite">
-            <%= icon('fa', 'heart', class: 'fa-lg text-primary') %>
-        </span>
-        <div class="card-car-infos">
-          <div>
-            <h2>Title here</h2>
-            <p>Short description here!</p>
-          </div>
-          <h2 class="card-car-pricing">€99.99/day</h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-car-user avatar-bordered" />
-        </div>
-        <%= link_to '', '#', class: 'card-car-link' %>
-      </div>
+    <% @latest_cars.each do |car| %>
+      <%= render car %>
     <% end %>
   </div>
 </section>
@@ -36,16 +22,16 @@
   </div>
   <div class="grid-cars">
     <div class="grid-featured">
-      <%= render @car, featured: true, dark: true %>
+      <%= render @featured_cars.first, featured: true, dark: true %>
     </div>
     <div class="grid-top-1">
-      <%= render @car2, dark: true %>
+      <%= render @featured_cars.second, dark: true, square: true %>
     </div>
     <div class="grid-top-2">
-      <%= render @car3, dark: true %>
+      <%= render @featured_cars.third, dark: true, square: true %>
     </div>
     <div class="grid-bottom">
-      <%= render @car4, dark: true %>
+      <%= render @featured_cars.fourth, dark: true, wide: true %>
     </div>
   </div>
 </section>

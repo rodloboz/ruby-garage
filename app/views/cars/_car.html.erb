@@ -1,5 +1,9 @@
 <% featured = defined?(featured) ? local_assigns[:featured] : false %>
+<% square = defined?(square) ? local_assigns[:square] : false %>
+<% wide = defined?(wide) ? local_assigns[:wide] : false %>
+<% dark = defined?(dark) ? local_assigns[:dark] : false %>
 <% height = featured ? 500 : 200 %>
+
 <div class="card-car<%= ' card-car--dark' if dark  %><%= ' card-car--featured' if featured %>">
   <%= cl_image_tag car.photo.key, height: height %>
   <span class="card-car-favorite">
@@ -10,8 +14,12 @@
       <h2><%= car.name %></h2>
       <% if featured %>
         <p><%= car.description %></p>
-      <% elsif !dark %>
-        <p><%= truncate car.description %></p>
+      <% elsif square %>
+       <p><%= truncate car.description, length: 20 %></p>
+      <% elsif wide %>
+       <p><%= truncate car.description, length: 60 %></p>
+      <% else %>
+        <p><%= truncate car.description, length: 38 %></p>
       <% end %>
     </div>
     <h2 class="card-car-pricing">€99.99/day</h2>
