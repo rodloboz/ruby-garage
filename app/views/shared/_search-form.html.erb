@@ -46,7 +46,11 @@
         <%= f.label :year, 'Start date / End date' %>
         <%= f.text_field :dates,
                          value: params[:year],
-                         placeholder: 'Add dates'
+                         placeholder: 'Add dates',
+                          data: {
+                            controller: 'flatpickr',
+                            flatpickr_min_date: Time.zone.today
+                          }
         %>
       </div>
       <div class="p-3">

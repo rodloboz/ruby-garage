@@ -3,7 +3,19 @@
     <h3><span class="price">€<%= number_with_delimiter(@car.price_per_day) %></span> per day</h3>
     <hr>
     <div class="form-row">
-      <%= f.input :start_date, as: :string, label: "Dates", placeholder: "From" %>
+      <%= f.input :start_date,
+                  as: :string,
+                  label: 'Dates',
+                  placeholder: 'From',
+                  input_html: {
+                    value: f.object.start_date || Time.zone.now,
+                    data: {
+                      controller: 'flatpickr',
+                      flatpickr_show_months: 1,
+                      flatpickr_min_date: Time.zone.today
+                    }
+                  }
+      %>
       <%= f.input :end_date, as: :string, label: false, placeholder: "To", disabled: true %>
     </div>
     <div class="costs">
