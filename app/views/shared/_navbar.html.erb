@@ -1,6 +1,11 @@
 <% fixed = defined?(fixed) ? local_assigns[:fixed] : false %>
 
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon px-5 <%= 'fixed-top' if fixed %>">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon px-5 <%= 'fixed-top' if fixed %>"
+     data-controller="scroll"
+     data-action="scroll@window->scroll#toggle"
+     data-scroll-class-name="navbar-shadow"
+     data-scroll-trigger-y="30"
+>
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "logo.png" %>
     <span>Ruby Garage</span>

@@ -1,0 +1,11 @@
+<li class="m-2">
+  <%= link_to cars_path(model: model.name),
+              class: 'd-flex flex-row align-items-center' do %>
+    <div class="icon-box border mr-2">
+      <%= inline_svg_tag('engine.svg', aria: true) %>
+    </div>
+    <div class="search-suggestion">
+      <%= model.name %>
+    </div>
+  <% end %>
+</li>

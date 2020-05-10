@@ -10,5 +10,8 @@ Rails.application.routes.draw do
   resource :garage
   resource :profile, only: %i[edit update]
 
+  resources :manufacturers, only: :index
+  resources :models, only: :index
+
   root to: 'pages#home'
 end

@@ -40,6 +40,10 @@ class Car < ApplicationRecord
                  .distinct
   }
 
+  scope :search_by_year_ranges, lambda { |ranges|
+    where(year: ranges)
+  }
+
   def name
     [manufacturer.name, model.name].join(' ')
   end

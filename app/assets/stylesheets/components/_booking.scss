@@ -1,10 +1,13 @@
 .booking {
   .costs {
     margin-top: 10px;
-    // max-height: 0;
-    // max-height: 999rem;
+    max-height: 0;
     overflow: hidden;
     transition: max-height 2000ms ease-in-out;
+
+    &.visible {
+      max-height: 999rem;
+    }
   }
 
   h3 {
@@ -15,5 +18,9 @@
       font-size: 1.5em;
       font-weight: bold;
     }
+  }
+
+  input:hover {
+    cursor: pointer;
   }
 }

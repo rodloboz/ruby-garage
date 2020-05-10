@@ -3,53 +3,91 @@
                 local: true,
                 method: :get do |f| %>
     <div class="search-wrapper w-100 d-flex flex-row justify-content-between border rounded bg-white">
-      <div class="d-flex flex-column border-right group p-3">
+      <div class="d-flex flex-column border-right group p-3"
+           data-controller="dropdown suggestions"
+           data-suggestions-url="<%= manufacturers_path %>"
+      >
         <%= f.label :manufacturer, 'Manufacturers' %>
         <%= f.text_field :manufacturer,
                          value: params[:manufacturer],
-                         placeholder: 'Select a manufacturer'
+                         placeholder: 'Select a manufacturer',
+                         data: {
+                           action: 'focus->dropdown#toggle keyup->suggestions#suggest'
+                         }
         %>
-        <div class="group-dropdown border p-3">
-          <ul>
-            <li>Ferrari</li>
-            <li>Lambo</li>
+        <div class="group-dropdown border p-3 d-none"
+             data-target="dropdown.collapsible"
+             data-action="click@window->dropdown#hide"
+        >
+          <ul data-target="suggestions.container">
+            <h5 class="m-2">Most popular</h5>
+            <%= render @manufacturers %>
           </ul>
         </div>
       </div>
-      <div class="d-flex flex-column border-right group p-3">
+      <div class="d-flex flex-column border-right group p-3"
+           data-controller="dropdown suggestions"
+           data-suggestions-url="<%= models_path %>"
+      >
         <%= f.label :manufacturer, 'Models' %>
         <%= f.text_field :model,
                          value: params[:model],
-                         placeholder: 'Select a model'
+                         placeholder: 'Select a model',
+                         data: {
+                           action: 'focus->dropdown#toggle keyup->suggestions#suggest'
+                         }
         %>
-        <div class="group-dropdown border p-3">
-          <ul>
-            <li>Ferrari</li>
-            <li>Lambo</li>
+        <div class="group-dropdown border p-3 d-none"
+             data-target="dropdown.collapsible"
+             data-action="click@window->dropdown#hide"
+        >
+          <ul data-target="suggestions.container">
+            <h5 class="m-2">Most popular</h5>
+            <%= render @models %>
           </ul>
         </div>
       </div>
-      <div class="d-flex flex-column border-right group p-3">
+      <div class="d-flex flex-column border-right group p-3"
+           data-controller="dropdown">
         <%= f.label :year, 'Year' %>
-        <%= f.text_field :year,
-                         value: params[:year],
-                         placeholder: 'Select the year'
+        <%= f.text_field :fk_year,
+                         placeholder: 'Select the year',
+                         data: {
+                           action: 'focus->dropdown#toggle'
+                         }
         %>
-        <div class="group-dropdown border p-3">
+        <div class="group-dropdown border p-3 d-none"
+             data-target="dropdown.collapsible"
+             data-action="click@window->dropdown#hide"
+        >
           <ul>
-            <li>Ferrari</li>
-            <li>Lambo</li>
+            <% @year_options.each do |option| %>
+              <li>
+                <label class="control control--checkbox"><%= option.first %>
+                  <%= f.check_box :year,
+                                  {
+                                    multiple: true,
+                                    checked: params[:year]&.include?(option.last)
+                                  },
+                                  option.last
+                  %>
+                  <div class="control__indicator"></div>
+                </label>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>
-      <div class="d-flex flex-column group p-3">
+      <div class="d-flex flex-column group p-3"
+           data-controller="datepicker"
+           data-target="datepicker.append"
+           data-datepicker-min-date="<%= Time.zone.now %>"
+      >
         <%= f.label :year, 'Start date / End date' %>
         <%= f.text_field :dates,
-                         value: params[:year],
                          placeholder: 'Add dates',
                           data: {
-                            controller: 'flatpickr',
-                            flatpickr_min_date: Time.zone.today
+                            target: 'datepicker.instance'
                           }
         %>
       </div>
