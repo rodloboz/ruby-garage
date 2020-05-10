@@ -11,12 +11,6 @@ export default class extends Controller {
     this.containerTarget.innerHTML = html
   }
 
-  async fetchResults(query) {
-    const results = await get(`${this.url}?=${query}`)
-    console.log(results.data)
-    return results.data
-  }
-
   get url() {
     return this.data.get('url');
   }
