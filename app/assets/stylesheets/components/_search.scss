@@ -5,7 +5,8 @@
     text-transform: uppercase;
   }
 
-  select, input[type=text] {
+  select, input[type=text],
+  input[type=number] {
     display: inline-block;
     cursor: pointer;
     outline: 0;

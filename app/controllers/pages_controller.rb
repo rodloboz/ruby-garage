@@ -8,6 +8,7 @@ class PagesController < ApplicationController
     @latest_cars = Car.last(3)
     @manufacturers = Manufacturer.limit(5)
     @models = Model.limit(5)
+    @min_price, @max_price = Car.pluck(:price_per_day).minmax
     @year_options = [
       ['Before 1950', '1900_1949'],
       ['1950-1959', '1950_1959'],

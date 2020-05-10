@@ -79,17 +79,45 @@
         </div>
       </div>
       <div class="d-flex flex-column group p-3"
-           data-controller="datepicker"
-           data-target="datepicker.append"
-           data-datepicker-min-date="<%= Time.zone.now %>"
+           data-controller="dropdown range-slider"
+           data-range-slider-start-values="<%= [@min_price, @max_price] %>"
       >
-        <%= f.label :year, 'Start date / End date' %>
-        <%= f.text_field :dates,
-                         placeholder: 'Add dates',
-                          data: {
-                            target: 'datepicker.instance'
-                          }
-        %>
+        <div class="d-flex flex-row justify-content-between align-items-center">
+          <div>
+            <%= f.label :min_price, 'Min price' %>
+            <div class="d-flex flex-row align-items-center">
+              <span class="mr-2">€</span>
+              <%= f.number_field :min_price,
+                        value: @min_price,
+                        data: {
+                          action: 'focus->dropdown#toggle',
+                          target: 'range-slider.min'
+                        }
+              %>
+            </div>
+          </div>
+          <div>
+            <%= f.label :max_price, 'Max price' %>
+            <div class="d-flex flex-row align-items-center">
+              <span class="mr-2">€</span>
+              <%= f.number_field :max_price,
+                        value: @max_price,
+                        data: {
+                          action: 'focus->dropdown#toggle',
+                          target: 'range-slider.max'
+                        }
+              %>
+            </div>
+          </div>
+        </div>
+        <div class="group-dropdown border p-3 d-none"
+             data-target="dropdown.collapsible"
+             data-action="click@window->dropdown#hide"
+        >
+          <p class="m-2"
+             data-target="range-slider.container"
+          ></p>
+        </div>
       </div>
       <div class="p-3">
         <%= f.submit 'Search', class: 'btn btn-primary btn-rainbow' %>

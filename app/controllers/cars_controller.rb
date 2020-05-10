@@ -10,6 +10,7 @@ class CarsController < ApplicationController
     @cars = @cars.page(params[:page]).per(12)
     @manufacturers = Manufacturer.limit(5)
     @models = Model.limit(5)
+    @min_price, @max_price = @cars.map(&:price_per_day).minmax
     @year_options = [
       ['Before 1950', '1900_1949'],
       ['1950-1959', '1950_1959'],
@@ -85,7 +86,9 @@ class CarsController < ApplicationController
     CarSearchService.call(
       manufacturer: params[:manufacturer],
       model: params[:model],
-      years: years
+      years: years,
+      min_price: params[:min_price],
+      max_price: params[:max_price]
     )
   end
 end
