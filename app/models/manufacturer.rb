@@ -3,7 +3,7 @@ class Manufacturer < ApplicationRecord
 
   validates :name, presence: true,
                    uniqueness: true
-  
+
   scope :search_by_name, lambda { |term| 
     where('name ILIKE ?', "#{term}%")
   }

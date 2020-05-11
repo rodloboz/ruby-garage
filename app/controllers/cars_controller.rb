@@ -8,8 +8,8 @@ class CarsController < ApplicationController
                                 .per(12).out_of_range?
 
     @cars = @cars.page(params[:page]).per(12)
-    @manufacturers = Manufacturer.limit(5)
-    @models = Model.limit(5)
+    @manufacturers = Manufacturer.order(car_count: :desc).limit(5)
+    @models = Model.order(car_count: :desc).limit(5)
     @min_price, @max_price = @cars.map(&:price_per_day).minmax
     @year_options = [
       ['Before 1950', '1900_1949'],
@@ -69,7 +69,7 @@ class CarsController < ApplicationController
     params.require(:car).permit(
       :manufacturer_id, :model_id, :color,
       :year, :number_plate, :description,
-      :photo, :price_per_day
+      :photo, :price_per_day, :hex_code
     )
   end
 

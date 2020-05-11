@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_09_080228) do
+ActiveRecord::Schema.define(version: 2020_05_10_170845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,18 @@ ActiveRecord::Schema.define(version: 2020_05_09_080228) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "car_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer "price_per_day"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["car_id"], name: "index_bookings_on_car_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
   create_table "cars", force: :cascade do |t|
     t.bigint "manufacturer_id", null: false
     t.bigint "model_id", null: false
@@ -47,6 +59,9 @@ ActiveRecord::Schema.define(version: 2020_05_09_080228) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "owner_id", null: false
     t.integer "favorited_count", default: 0, null: false
+    t.integer "number_of_bookings", default: 0, null: false
+    t.integer "price_per_day"
+    t.string "hex_code"
     t.index ["manufacturer_id"], name: "index_cars_on_manufacturer_id"
     t.index ["model_id"], name: "index_cars_on_model_id"
     t.index ["owner_id"], name: "index_cars_on_owner_id"
@@ -65,6 +80,7 @@ ActiveRecord::Schema.define(version: 2020_05_09_080228) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "car_count", default: 0, null: false
   end
 
   create_table "models", force: :cascade do |t|
@@ -72,6 +88,7 @@ ActiveRecord::Schema.define(version: 2020_05_09_080228) do
     t.bigint "manufacturer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "car_count", default: 0, null: false
     t.index ["manufacturer_id"], name: "index_models_on_manufacturer_id"
   end
 
@@ -90,6 +107,8 @@ ActiveRecord::Schema.define(version: 2020_05_09_080228) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bookings", "cars"
+  add_foreign_key "bookings", "users"
   add_foreign_key "cars", "manufacturers"
   add_foreign_key "cars", "models"
   add_foreign_key "cars", "users", column: "owner_id"

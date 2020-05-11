@@ -6,8 +6,8 @@ class PagesController < ApplicationController
 
     @featured_cars = Car.first(5)
     @latest_cars = Car.last(3)
-    @manufacturers = Manufacturer.limit(5)
-    @models = Model.limit(5)
+    @manufacturers = Manufacturer.order(car_count: :desc).limit(5)
+    @models = Model.order(car_count: :desc).limit(5)
     @min_price, @max_price = Car.pluck(:price_per_day).minmax
     @year_options = [
       ['Before 1950', '1900_1949'],

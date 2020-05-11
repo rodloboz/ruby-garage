@@ -11,9 +11,9 @@ export default class extends Controller {
       connect: true,
       range: {
         'min': 0,
-        'max': 20000
+        'max': 50000
       },
-      step: 150,
+      step: 500,
       format: {
         to: value => value.toString().split('.')[0],
         from: value => Number(value.replace(',-', ''))
