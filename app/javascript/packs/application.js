@@ -2,8 +2,6 @@
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
-import 'flatpickr/dist/flatpickr.css';
-import 'nouislider/distribute/nouislider.css';
 
 require("@rails/ujs").start()
 require("turbolinks").start()
@@ -34,5 +32,3 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 });
-
-import "controllers"
