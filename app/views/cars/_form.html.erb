@@ -1,17 +1,32 @@
 <%= simple_form_for @car do |f| %>
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-6"
+         data-controller="options"
+    >
       <%= f.association :manufacturer,
                     collection: Manufacturer.order(name: :asc),
                     include_blank: false,
-                    include_hidden: false
+                    include_hidden: false,
+                    input_html: {
+                      data: { action: 'change->options#load' }
+                    }
       %>
       <%= f.association :model,
                         collection: Model.order(name: :asc),
                         include_blank: false,
-                        include_hidden: false
+                        include_hidden: false,
+                        input_html: {
+                          disabled: true,
+                          data: { target: 'options.select' }
+                        }
       %>
-      <%= f.input :color, placeholder: 'Burgundy' %>
+      <div class="d-flex flex-row justify-content-between">
+        <%= f.input :color, placeholder: 'Burgundy',
+                            wrapper_html: {
+                              class: 'w-100 mr-2'
+                            } %>
+        <%= f.input :hex_code, placeholder: '#' %>
+      </div>
       <%= f.input :year, collection: @years,
                         selected: f.object.year || @years.last,
                         include_blank: false,

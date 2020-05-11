@@ -9,9 +9,17 @@ class Car < ApplicationRecord
   has_many :favoriting_users, through: :favorites,
                               source: :user
 
+  counter_culture :manufacturer, column_name: 'car_count'
+  counter_culture :model, column_name: 'car_count'
+
   validates :color,
             :description,
             :number_plate, presence: true
+
+  validates :hex_code, presence: true,
+                       format: {
+                         with: /\A#(?:[0-9a-fA-F]{3}){1,2}\z/
+                       }
 
   validates :year, presence: true,
                   numericality: {
@@ -38,6 +46,10 @@ class Car < ApplicationRecord
   scope :search_by_model, lambda { |model|
     joins(:model).where('models.name ILIKE ?', "%#{model}%")
                  .distinct
+  }
+
+  scope :search_by_year_ranges, lambda { |ranges|
+    where(year: ranges)
   }
 
   def name

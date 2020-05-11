@@ -37,6 +37,7 @@ gem 'cloudinary', '~> 1.12.0'
 gem 'kaminari'
 gem 'pundit'
 gem 'counter_culture', '~> 2.0'
+gem 'inline_svg'
 
 group :development, :test do
   gem 'pry-byebug'
