@@ -5,6 +5,8 @@ class Car < ApplicationRecord
 
   has_one_attached :photo
 
+  has_many :bookings
+
   has_many :favorites, dependent: :destroy
   has_many :favoriting_users, through: :favorites,
                               source: :user
@@ -50,6 +52,15 @@ class Car < ApplicationRecord
 
   scope :search_by_year_ranges, lambda { |ranges|
     where(year: ranges)
+  }
+
+  scope :search_by_available_dates, lambda { |from, to|
+    sql_query = " \
+      bookings.car_id IS NULL \
+      OR ((bookings.start_date NOT BETWEEN :from AND :to) \
+      AND (bookings.end_date NOT BETWEEN :from AND :to)) \
+    "
+    left_outer_joins(:bookings).where(sql_query, from: from, to: to)
   }
 
   def name

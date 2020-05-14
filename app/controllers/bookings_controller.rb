@@ -4,6 +4,7 @@ class BookingsController < PrivateController
     @booking = Booking.new(booking_params)
     @booking.car = @car
     @booking.user = current_user
+    authorize @booking
 
     if @booking.save
       redirect_to cars_path
